@@ -23,13 +23,13 @@ public class FlappyDemo extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
+		gsm.push(new MenuState(gsm));
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		gsm.push(new MenuState(gsm));
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 

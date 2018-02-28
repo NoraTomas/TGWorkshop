@@ -4,13 +4,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Stack;
 
-public class GameStateManager {
+public final class GameStateManager {
 
     private Stack<State> states;
 
     public GameStateManager(){
         states = new Stack<State>();
-
     }
 
     public void push(State state){
@@ -33,6 +32,4 @@ public class GameStateManager {
     public void render(SpriteBatch sb){
         states.peek().render(sb);
     }
-
-
 }

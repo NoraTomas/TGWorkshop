@@ -1,5 +1,7 @@
 package states;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -18,12 +20,14 @@ public class MenuState extends State {
 
     @Override
     public void handleInput() {
-
+        if(Gdx.input.isTouched()){
+            gsm.set(new PlayState(gsm));
+        }
     }
 
     @Override
     public void update(float dt) {
-
+        handleInput();
     }
 
     @Override
@@ -32,5 +36,11 @@ public class MenuState extends State {
         sb.draw(background, 0, 0, FlappyDemo.WIDTH, FlappyDemo.HEIGHT);
         sb.draw(playbtn, FlappyDemo.WIDTH/2 - playbtn.getWidth()/2, FlappyDemo.HEIGHT/2);
         sb.end();
+    }
+
+    @Override
+    public void dispose() {
+        background.dispose();
+        playbtn.dispose();
     }
 }

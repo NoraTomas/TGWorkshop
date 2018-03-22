@@ -4,15 +4,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import nora.tomas.game.FlappyDemo;
+import sprites.Bird;
 
 public class PlayState extends State {
-    private Texture bird;
+    private Texture birdImage;
     private Texture background;
+    private Bird flappyBird;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
         background = new Texture("bg.png");
-        bird = new Texture("bird.png");
+        birdImage = new Texture("bird.png");
+        flappyBird = new Bird(50, 50);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class PlayState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(background, 0, 0, FlappyDemo.WIDTH, FlappyDemo.HEIGHT);
-        sb.draw(bird, 50, 50);
+        sb.draw(flappyBird.getBirdImage(), flappyBird, 50);
         sb.end();
     }
 

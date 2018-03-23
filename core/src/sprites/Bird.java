@@ -22,11 +22,7 @@ public class Bird {
     public void update(float dt){
         velocity.add(0, GRAVITY, 0); //Adds Gavity to the y-component of velocity
         velocity.scl(dt); //dt = 0,017... So it scales down the power of gravity
-
         makeBirdMove();
-
-
-         //Make position affected by velocity
 
         velocity.scl(1/dt); //Scale velocity back to normal
 
@@ -41,7 +37,7 @@ public class Bird {
     }
 
     public void jump(){
-        velocity.y = 420;
+
     }
 
     public Sprite getBirdImage(){

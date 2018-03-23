@@ -19,18 +19,30 @@ public class MenuState extends State {
 
     @Override
     public void handleInput() {
-        if(Gdx.input.isTouched() && touchWithinButtonBorders()){
+        if(Gdx.input.isTouched() && touchWithinButtonBordersX() &&
+                touchWithinButtonBordersY()){
             gsm.set(new PlayState(gsm));
         }
     }
 
-    private boolean touchWithinButtonBorders() {
+    private boolean touchWithinButtonBordersX() {
         int playbtnStarXtCoordinate = FlappyDemo.WIDTH/2 - playbtn.getWidth()/2;
         int playbtnEndXCoordinate = (FlappyDemo.WIDTH/2 - playbtn.getWidth()/2)
                 + playbtn.getWidth();
 
         if (Gdx.input.getX() > playbtnStarXtCoordinate &&
                 Gdx.input.getX() < playbtnEndXCoordinate){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean touchWithinButtonBordersY(){
+        int playbtnStarYtCoordinate = 288;
+        int playbtnEndYtCoordinate = 234;
+
+        if(Gdx.input.getY() < playbtnStarYtCoordinate &&
+                Gdx.input.getY() > playbtnEndYtCoordinate){
             return true;
         }
         return false;

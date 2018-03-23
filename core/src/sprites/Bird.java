@@ -23,11 +23,21 @@ public class Bird {
         velocity.add(0, GRAVITY, 0); //Adds Gavity to the y-component of velocity
         velocity.scl(dt); //dt = 0,017... So it scales down the power of gravity
 
+        makeBirdMove();
 
-        position.add(0, velocity.y, 0); //Make position affected by velocity
+
+         //Make position affected by velocity
 
         velocity.scl(1/dt); //Scale velocity back to normal
 
+    }
+
+    private void makeBirdMove() {
+        position.add(velocity.x, velocity.y, 0);
+
+        if(position.y < 0){
+            position.y = 0;
+        }
     }
 
     public void jump(){

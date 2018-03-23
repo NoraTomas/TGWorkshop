@@ -1,5 +1,6 @@
 package states;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -9,13 +10,13 @@ import sprites.Bird;
 public class PlayState extends State {
     private Texture birdImage;
     private Texture background;
-    private Bird flappyBird;
+    private Bird bird;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
         background = new Texture("bg.png");
         birdImage = new Texture("bird.png");
-        flappyBird = new Bird(50, 50);
+        bird = new Bird(50, 50);
     }
 
     @Override
@@ -25,14 +26,17 @@ public class PlayState extends State {
 
     @Override
     public void update(float dt) {
-
+        bird.update(dt);
+        if(Gdx.input.justTouched()){
+            bird.jump();
+        }
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(background, 0, 0, FlappyDemo.WIDTH, FlappyDemo.HEIGHT);
-        sb.draw(flappyBird.getBirdImage(), flappyBird, 50);
+        sb.draw(bird.getBirdImage(), bird.getXPosition(), bird.getYPosition());
         sb.end();
     }
 

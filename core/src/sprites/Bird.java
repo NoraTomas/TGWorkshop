@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 
 public class Bird {
+    public static int GRAVITY = -15;
     private Vector3 position;
     private Vector3 velocity;
     private Texture birdImage;
@@ -16,16 +17,27 @@ public class Bird {
     }
 
     public void update(float dt){
-        if(Gdx.input.justTouched()){
-            velocity.add(0, 5, 0);
-        }
+        velocity.add(0, GRAVITY, 0);
+        velocity.scl(dt);
+        position.add(0, velocity.y, 0);
+
+        velocity.scl(1/dt);
+
+    }
+
+    public void jump(){
+        velocity.y = 420;
     }
 
     public Texture getBirdImage(){
         return birdImage;
     }
 
-    public float getXPositionCoordinate(){
+    public float getXPosition(){
         return position.x;
+    }
+
+    public float getYPosition(){
+        return position.y;
     }
 }

@@ -16,7 +16,7 @@ public class PlayState extends State {
         super(gsm);
         background = new Texture("bg.png");
         birdImage = new Texture("bird.png");
-        bird = new Bird(50, 50);
+        bird = new Bird(220, 150);
     }
 
     @Override

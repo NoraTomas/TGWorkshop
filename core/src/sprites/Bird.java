@@ -17,11 +17,13 @@ public class Bird {
     }
 
     public void update(float dt){
-        velocity.add(0, GRAVITY, 0);
-        velocity.scl(dt);
-        position.add(0, velocity.y, 0);
+        velocity.add(0, GRAVITY, 0); //Adds Gavity to the y-component of velocity
+        velocity.scl(dt); //dt = 0,017... So it scales down the power of gravity
 
-        velocity.scl(1/dt);
+        
+        position.add(0, velocity.y, 0); //Make position affected by velocity
+
+        velocity.scl(1/dt); //Scale velocity back to normal
 
     }
 
